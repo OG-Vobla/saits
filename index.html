@@ -224,13 +224,8 @@
                     <h3>Расскажите о вашем проекте</h3>
                     <p>Заполните форму, чтобы получить бесплатную консультацию и индивидуальное предложение</p>
                 </div>
-                <form class="contact-form reveal-card">
                     <form class="contact-form reveal-card" action="https://api.web3forms.com/submit" method="POST">
                         <input type="hidden" name="access_key" value="cb1c1a00-b9d0-467b-bc39-5bf30a6435bd" />
-                        <input type="hidden" name="subject" value="Новая заявка с сайта Сайты.xyz" />
-                        <input type="hidden" name="from_name" value="Сайты.xyz" />
-                        <input type="hidden" name="email_to" value="gggg26705@gmail.com" />
-                        <input type="hidden" name="redirect" value="https://sait.xyz/success.html" />
                         <div class="form-stepper">
                             <div class="step active"><i class="fas fa-user"></i><span>Контакт</span></div>
                             <div class="step"><i class="fas fa-lightbulb"></i><span>Идея</span></div>
@@ -241,12 +236,12 @@
                             <label for="name"><i class="fas fa-user"></i> Ваше имя</label>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" required>
-                            <label for="email"><i class="fas fa-envelope"></i> Ваш email</label>
-                        </div>
-                        <div class="form-group">
                             <input type="text" id="project" name="project" required>
                             <label for="project"><i class="fas fa-lightbulb"></i> Кратко о проекте</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email"><i class="fas fa-envelope"></i> Ваш email</label>
                         </div>
                         <div class="form-group">
                             <textarea id="message" name="message" required></textarea>

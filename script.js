@@ -213,38 +213,3 @@ window.addEventListener('scroll', () => {
     }
     lastScrollY = window.scrollY;
 });
-
-// Contact Form Submission
-const contactForm = document.querySelector('.contact-form');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const submitButton = contactForm.querySelector('button[type="submit"]');
-        const formData = new FormData(contactForm);
-        
-        // Disable submit button during submission
-        if (submitButton) {
-            submitButton.disabled = true;
-            submitButton.textContent = 'Отправка...';
-        }
-        
-        try {
-            // Here you would typically send the form data to your server
-            // For demo purposes, we'll just simulate a delay
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            
-            // Show success message
-            alert('Сообщение успешно отправлено!');
-            contactForm.reset();
-        } catch (error) {
-            alert('Ошибка при отправке сообщения. Пожалуйста, попробуйте снова.');
-        } finally {
-            if (submitButton) {
-                submitButton.disabled = false;
-                submitButton.textContent = 'Отправить сообщение';
-            }
-        }
-    });
-}
