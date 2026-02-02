@@ -61,7 +61,7 @@ const updateSlider = (newIndex) => {
 // Event listeners for controls
 if (prevBtn) {
     prevBtn.addEventListener('click', () => {
-        const newIndex = (currentSlide - 1 + caseStudies.length) % caseStudies.length;
+        const newIndex = (currentSlide - 1) % caseStudies.length;
         updateSlider(newIndex);
         resetAutoplay();
     });
@@ -216,9 +216,11 @@ window.addEventListener('scroll', () => {
 
 // ==================== INFO CAROUSEL ====================
 class InfoCarousel {
-    constructor(carouselId, dotsId) {
+    constructor(carouselId, dotsId, arrowLeftId, arrowRightId) {
         this.carousel = document.getElementById(carouselId);
         this.dotsContainer = document.getElementById(dotsId);
+        this.arrowLeft = arrowLeftId ? document.getElementById(arrowLeftId) : null;
+        this.arrowRight = arrowRightId ? document.getElementById(arrowRightId) : null;
         
         if (!this.carousel || !this.dotsContainer) return;
         
@@ -236,6 +238,7 @@ class InfoCarousel {
         this.updateDimensions();
         this.updateCarousel();
         this.addEventListeners();
+        this.updateArrows();
         
         setTimeout(() => this.scrollToIndex(0), 100);
     }
@@ -270,6 +273,7 @@ class InfoCarousel {
         });
 
         this.updateDots();
+        this.updateArrows();
         
         // Reset snapping flag after animation
         setTimeout(() => {
@@ -281,6 +285,36 @@ class InfoCarousel {
         this.dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === this.currentIndex);
         });
+    }
+
+    updateArrows() {
+        if (!this.arrowLeft || !this.arrowRight) return;
+        
+        // Disable left arrow if at first card
+        if (this.currentIndex === 0) {
+            this.arrowLeft.disabled = true;
+        } else {
+            this.arrowLeft.disabled = false;
+        }
+        
+        // Disable right arrow if at last card
+        if (this.currentIndex === this.cards.length - 1) {
+            this.arrowRight.disabled = true;
+        } else {
+            this.arrowRight.disabled = false;
+        }
+    }
+
+    goToPrevious() {
+        if (this.currentIndex > 0) {
+            this.scrollToIndex(this.currentIndex - 1);
+        }
+    }
+
+    goToNext() {
+        if (this.currentIndex < this.cards.length - 1) {
+            this.scrollToIndex(this.currentIndex + 1);
+        }
     }
 
     updateCarousel() {
@@ -319,10 +353,20 @@ class InfoCarousel {
         if (this.currentIndex !== closestIndex) {
             this.currentIndex = closestIndex;
             this.updateDots();
+            this.updateArrows();
         }
     }
 
     addEventListeners() {
+        // Arrow button listeners
+        if (this.arrowLeft) {
+            this.arrowLeft.addEventListener('click', () => this.goToPrevious());
+        }
+        
+        if (this.arrowRight) {
+            this.arrowRight.addEventListener('click', () => this.goToNext());
+        }
+
         this.carousel.addEventListener('scroll', () => {
             this.updateCarousel();
         });
@@ -423,14 +467,6 @@ class InfoCarousel {
     }
 }
 
-// Initialize Info Carousel when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        new InfoCarousel('infoCarousel', 'infoDots');
-    });
-} else {
-    new InfoCarousel('infoCarousel', 'infoDots');
-}
 
 // ==================== INITIALIZE ALL CAROUSELS ====================
 if (document.readyState === 'loading') {
@@ -440,8 +476,9 @@ if (document.readyState === 'loading') {
 }
 
 function initAllCarousels() {
-    new InfoCarousel('servicesCarousel', 'servicesDots');
-    new InfoCarousel('tildaCarousel', 'tildaDots');
-    new InfoCarousel('casesCarousel', 'casesDots');
-    new InfoCarousel('advantagesCarousel', 'advantagesDots');
+    new InfoCarousel('infoCarousel', 'infoDots', 'infoArrowLeft', 'infoArrowRight');
+    new InfoCarousel('servicesCarousel', 'servicesDots', 'servicesArrowLeft', 'servicesArrowRight');
+    new InfoCarousel('tildaCarousel', 'tildaDots', 'tildaArrowLeft', 'tildaArrowRight');
+    new InfoCarousel('casesCarousel', 'casesDots', 'casesArrowLeft', 'casesArrowRight');
+    new InfoCarousel('advantagesCarousel', 'advantagesDots', 'advantagesArrowLeft', 'advantagesArrowRight');
 }
