@@ -213,3 +213,235 @@ window.addEventListener('scroll', () => {
     }
     lastScrollY = window.scrollY;
 });
+
+// ==================== INFO CAROUSEL ====================
+class InfoCarousel {
+    constructor(carouselId, dotsId) {
+        this.carousel = document.getElementById(carouselId);
+        this.dotsContainer = document.getElementById(dotsId);
+        
+        if (!this.carousel || !this.dotsContainer) return;
+        
+        // Find all card types in this carousel
+        this.cards = this.carousel.querySelectorAll('.info-card, .service-card, .tilda-feature, .case-card, .advantage-card');
+        this.currentIndex = 0;
+        this.cardWidth = 0;
+        this.isSnapping = false;
+        
+        this.init();
+    }
+
+    init() {
+        this.createDots();
+        this.updateDimensions();
+        this.updateCarousel();
+        this.addEventListeners();
+        
+        setTimeout(() => this.scrollToIndex(0), 100);
+    }
+
+    createDots() {
+        this.cards.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => this.scrollToIndex(index));
+            this.dotsContainer.appendChild(dot);
+        });
+        this.dots = this.dotsContainer.querySelectorAll('.dot');
+    }
+
+    updateDimensions() {
+        const card = this.cards[0];
+        if (!card) return;
+        const style = window.getComputedStyle(card);
+        const marginRight = parseInt(style.marginRight) || 24;
+        this.cardWidth = card.offsetWidth + marginRight;
+    }
+
+    scrollToIndex(index) {
+        this.isSnapping = true;
+        this.currentIndex = index;
+        const scrollPosition = this.cardWidth * index;
+        
+        this.carousel.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+        });
+
+        this.updateDots();
+        
+        // Reset snapping flag after animation
+        setTimeout(() => {
+            this.isSnapping = false;
+        }, 500);
+    }
+
+    updateDots() {
+        this.dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentIndex);
+        });
+    }
+
+    updateCarousel() {
+        const carouselRect = this.carousel.getBoundingClientRect();
+        const carouselCenter = carouselRect.left + carouselRect.width / 2;
+
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+
+        this.cards.forEach((card, index) => {
+            const cardRect = card.getBoundingClientRect();
+            const cardCenter = cardRect.left + cardRect.width / 2;
+            const distance = Math.abs(carouselCenter - cardCenter);
+            
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestIndex = index;
+            }
+
+            const maxDistance = carouselRect.width / 2 + cardRect.width / 2;
+            const normalizedDistance = Math.min(distance / maxDistance, 1);
+            
+            const opacity = 1 - (normalizedDistance * 0.4);
+            const scale = 1 - (normalizedDistance * 0.08);
+            
+            card.style.opacity = opacity;
+            card.style.transform = `scale(${scale})`;
+            
+            if (normalizedDistance < 0.2) {
+                card.classList.add('centered');
+            } else {
+                card.classList.remove('centered');
+            }
+        });
+
+        if (this.currentIndex !== closestIndex) {
+            this.currentIndex = closestIndex;
+            this.updateDots();
+        }
+    }
+
+    addEventListeners() {
+        this.carousel.addEventListener('scroll', () => {
+            this.updateCarousel();
+        });
+
+        window.addEventListener('resize', () => {
+            this.updateDimensions();
+            this.scrollToIndex(this.currentIndex);
+        });
+
+        // Touch support
+        let startX = 0;
+        let scrollLeft = 0;
+        let isTouching = false;
+
+        this.carousel.addEventListener('touchstart', (e) => {
+            isTouching = true;
+            startX = e.touches[0].pageX;
+            scrollLeft = this.carousel.scrollLeft;
+        });
+
+        this.carousel.addEventListener('touchend', (e) => {
+            if (!isTouching) return;
+            isTouching = false;
+            
+            const endX = e.changedTouches[0].pageX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0 && this.currentIndex < this.cards.length - 1) {
+                    this.scrollToIndex(this.currentIndex + 1);
+                } else if (diff < 0 && this.currentIndex > 0) {
+                    this.scrollToIndex(this.currentIndex - 1);
+                } else {
+                    // Snap to current if at edge
+                    this.scrollToIndex(this.currentIndex);
+                }
+            } else {
+                // Small swipe - snap to nearest
+                this.scrollToIndex(this.currentIndex);
+            }
+        });
+
+        // Mouse drag support
+        let isDragging = false;
+        let startMouseX = 0;
+
+        this.carousel.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startMouseX = e.pageX;
+            scrollLeft = this.carousel.scrollLeft;
+            this.carousel.style.cursor = 'grabbing';
+        });
+
+        this.carousel.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX;
+            const walk = (x - startMouseX) * 1.5;
+            this.carousel.scrollLeft = scrollLeft - walk;
+        });
+
+        this.carousel.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            this.carousel.style.cursor = 'grab';
+            
+            // Snap to nearest card after drag
+            setTimeout(() => {
+                if (!this.isSnapping) {
+                    this.scrollToIndex(this.currentIndex);
+                }
+            }, 50);
+        });
+
+        this.carousel.addEventListener('mouseleave', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            this.carousel.style.cursor = 'grab';
+            
+            // Snap to nearest card after drag
+            setTimeout(() => {
+                if (!this.isSnapping) {
+                    this.scrollToIndex(this.currentIndex);
+                }
+            }, 50);
+        });
+
+        // Snap to nearest card on scroll end (only if not already snapping)
+        let scrollTimeout;
+        this.carousel.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                if (!this.isSnapping && !isDragging && !isTouching) {
+                    this.scrollToIndex(this.currentIndex);
+                }
+            }, 150);
+        });
+    }
+}
+
+// Initialize Info Carousel when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new InfoCarousel('infoCarousel', 'infoDots');
+    });
+} else {
+    new InfoCarousel('infoCarousel', 'infoDots');
+}
+
+// ==================== INITIALIZE ALL CAROUSELS ====================
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAllCarousels);
+} else {
+    initAllCarousels();
+}
+
+function initAllCarousels() {
+    new InfoCarousel('servicesCarousel', 'servicesDots');
+    new InfoCarousel('tildaCarousel', 'tildaDots');
+    new InfoCarousel('casesCarousel', 'casesDots');
+    new InfoCarousel('advantagesCarousel', 'advantagesDots');
+}

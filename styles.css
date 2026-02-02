@@ -1179,3 +1179,367 @@ body {
         justify-content: flex-start;
     }
 }
+
+/* ==================== INFO CAROUSEL SECTION ==================== */
+.info-carousel-section {
+    padding: 80px 0;
+    background: var(--background);
+}
+
+.info-carousel-section .section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.info-carousel-container {
+    position: relative;
+    padding: 20px 0;
+}
+
+.info-carousel {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 24px;
+    padding: 40px 20px;
+    cursor: grab;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.info-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.info-carousel:active {
+    cursor: grabbing;
+}
+
+.info-card {
+    flex-shrink: 0;
+    width: 350px;
+    scroll-snap-align: center;
+    background: var(--section-bg);
+    border-radius: 16px;
+    padding: 40px 32px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-card.centered {
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.info-card-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--primary-color), #60a5fa);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    font-size: 28px;
+    color: white;
+}
+
+.info-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-color);
+}
+
+.info-card p {
+    font-size: 15px;
+    color: var(--light-text);
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.info-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.info-link:hover {
+    gap: 12px;
+}
+
+.info-link i {
+    transition: var(--transition);
+}
+
+/* Navigation Dots */
+.info-nav-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.info-nav-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.info-nav-dots .dot:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.info-nav-dots .dot.active {
+    background: var(--primary-color);
+    width: 28px;
+    border-radius: 4px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .info-carousel-section {
+        padding: 60px 0;
+    }
+
+    .info-carousel-section .section-title {
+        font-size: 2rem;
+        margin-bottom: 35px;
+    }
+
+    .info-carousel {
+        padding: 30px 15px;
+        gap: 20px;
+    }
+
+    .info-card {
+        width: 85vw;
+        max-width: 320px;
+        padding: 32px 24px;
+        min-height: 300px;
+    }
+
+    .info-card-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .info-card h3 {
+        font-size: 20px;
+    }
+
+    .info-card p {
+        font-size: 14px;
+    }
+
+    .info-nav-dots {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-carousel-section .section-title {
+        font-size: 1.75rem;
+    }
+
+    .info-carousel {
+        padding: 25px 10px;
+    }
+
+    .info-card {
+        width: 90vw;
+        max-width: 300px;
+        padding: 28px 20px;
+        min-height: 280px;
+    }
+
+    .info-card-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+
+    .info-card h3 {
+        font-size: 18px;
+    }
+}
+
+/* ==================== UNIVERSAL CAROUSEL STYLES ==================== */
+.services-carousel-container,
+.tilda-carousel-container,
+.cases-carousel-container,
+.advantages-carousel-container {
+    position: relative;
+    padding: 20px 0;
+}
+
+.services-carousel,
+.tilda-carousel,
+.cases-carousel,
+.advantages-carousel {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 24px;
+    padding: 40px 20px;
+    cursor: grab;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.services-carousel::-webkit-scrollbar,
+.tilda-carousel::-webkit-scrollbar,
+.cases-carousel::-webkit-scrollbar,
+.advantages-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.services-carousel:active,
+.tilda-carousel:active,
+.cases-carousel:active,
+.advantages-carousel:active {
+    cursor: grabbing;
+}
+
+/* Services Cards in Carousel */
+.services-carousel .service-card {
+    flex-shrink: 0;
+    width: 350px;
+    scroll-snap-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.services-carousel .service-card.centered {
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Tilda Cards in Carousel */
+.tilda-carousel .tilda-feature {
+    flex-shrink: 0;
+    width: 350px;
+    scroll-snap-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tilda-carousel .tilda-feature.centered {
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+}
+
+/* Cases Cards in Carousel */
+.cases-carousel .case-card {
+    flex-shrink: 0;
+    width: 400px;
+    scroll-snap-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cases-carousel .case-card.centered {
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+}
+
+/* Advantages Cards in Carousel */
+.advantages-carousel .advantage-card {
+    flex-shrink: 0;
+    width: 350px;
+    scroll-snap-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.advantages-carousel .advantage-card.centered {
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+}
+
+/* Unified Navigation Dots */
+.carousel-nav-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.carousel-nav-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-nav-dots .dot:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.carousel-nav-dots .dot.active {
+    background: var(--primary-color);
+    width: 28px;
+    border-radius: 4px;
+}
+
+/* Mobile Responsive for All Carousels */
+@media (max-width: 768px) {
+    .services-carousel,
+    .tilda-carousel,
+    .cases-carousel,
+    .advantages-carousel {
+        padding: 30px 15px;
+        gap: 20px;
+    }
+
+    .services-carousel .service-card,
+    .tilda-carousel .tilda-feature,
+    .advantages-carousel .advantage-card {
+        width: 85vw;
+        max-width: 320px;
+    }
+
+    .cases-carousel .case-card {
+        width: 85vw;
+        max-width: 360px;
+    }
+
+    .carousel-nav-dots {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-carousel,
+    .tilda-carousel,
+    .cases-carousel,
+    .advantages-carousel {
+        padding: 25px 10px;
+    }
+
+    .services-carousel .service-card,
+    .tilda-carousel .tilda-feature,
+    .advantages-carousel .advantage-card {
+        width: 90vw;
+        max-width: 300px;
+    }
+
+    .cases-carousel .case-card {
+        width: 90vw;
+        max-width: 340px;
+    }
+}

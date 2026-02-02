@@ -43,47 +43,95 @@
         <div class="hero-shape"></div>
     </section>
 
+    <!-- Info Carousel Section -->
+    <section class="info-carousel-section">
+        <div class="container">
+            <h2 class="section-title reveal-text">Что мы предлагаем</h2>
+            <div class="info-carousel-container">
+                <div class="info-carousel" id="infoCarousel">
+                    <div class="info-card">
+                        <div class="info-card-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Наши услуги</h3>
+                        <p>Frontend разработка, UI/UX дизайн и создание сайтов на Tilda с индивидуальным подходом</p>
+                        <a href="#services" class="info-link">Подробнее <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">
+                            <i class="fab fa-tumblr"></i>
+                        </div>
+                        <h3>Разработка на Tilda</h3>
+                        <p>Быстрый запуск вашего проекта с использованием Zero Block и готовых блоков Tilda</p>
+                        <a href="#tilda" class="info-link">Подробнее <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Кейсы</h3>
+                        <p>Изучите наши успешные проекты: E-Commerce, SaaS платформы и корпоративные сайты</p>
+                        <a href="#cases" class="info-link">Подробнее <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Почему выбирают меня</h3>
+                        <p>Личное участие, гибкость, выгодная стоимость и ответственный подход к каждому проекту</p>
+                        <a href="#advantages" class="info-link">Подробнее <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="info-nav-dots" id="infoDots"></div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
             <h2 class="section-title reveal-text">Наши услуги</h2>
-            <div class="services-grid">
-                <div class="service-card reveal-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
+            <div class="services-carousel-container">
+                <div class="services-carousel" id="servicesCarousel">
+                    <div class="service-card reveal-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Frontend разработка</h3>
+                        <p>Создаем отзывчивые, интерактивные и производительные пользовательские интерфейсы</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> React/Vue.js</li>
+                            <li><i class="fas fa-check"></i> Адаптивный дизайн</li>
+                            <li><i class="fas fa-check"></i> Анимации</li>
+                        </ul>
                     </div>
-                    <h3>Frontend разработка</h3>
-                    <p>Создаем отзывчивые, интерактивные и производительные пользовательские интерфейсы</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> React/Vue.js</li>
-                        <li><i class="fas fa-check"></i> Адаптивный дизайн</li>
-                        <li><i class="fas fa-check"></i> Анимации</li>
-                    </ul>
-                </div>
-                <div class="service-card reveal-card">
-                    <div class="service-icon">
-                        <i class="fas fa-paint-brush"></i>
+                    <div class="service-card reveal-card">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3>UI/UX дизайн</h3>
+                        <p>Проектируем интуитивные и красивые интерфейсы, которые восхищают пользователей</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Figma/Adobe XD</li>
+                            <li><i class="fas fa-check"></i> Прототипирование</li>
+                            <li><i class="fas fa-check"></i> Пользовательские тесты</li>
+                        </ul>
                     </div>
-                    <h3>UI/UX дизайн</h3>
-                    <p>Проектируем интуитивные и красивые интерфейсы, которые восхищают пользователей</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Figma/Adobe XD</li>
-                        <li><i class="fas fa-check"></i> Прототипирование</li>
-                        <li><i class="fas fa-check"></i> Пользовательские тесты</li>
-                    </ul>
-                </div>
-                <div class="service-card reveal-card">
-                    <div class="service-icon">
-                        <i class="fas fa-magic"></i>
+                    <div class="service-card reveal-card">
+                        <div class="service-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3>Tilda разработка</h3>
+                        <p>Создаем стильные сайты на Tilda для быстрого запуска вашего проекта</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Zero Block</li>
+                            <li><i class="fas fa-check"></i> Интеграции</li>
+                            <li><i class="fas fa-check"></i> Быстрый запуск</li>
+                        </ul>
                     </div>
-                    <h3>Tilda разработка</h3>
-                    <p>Создаем стильные сайты на Tilda для быстрого запуска вашего проекта</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Zero Block</li>
-                        <li><i class="fas fa-check"></i> Интеграции</li>
-                        <li><i class="fas fa-check"></i> Быстрый запуск</li>
-                    </ul>
                 </div>
+                <div class="carousel-nav-dots" id="servicesDots"></div>
             </div>
         </div>
     </section>
@@ -92,22 +140,25 @@
     <section id="tilda" class="tilda">
         <div class="container">
             <h2 class="section-title reveal-text">Разработка на Tilda</h2>
-            <div class="tilda-features">
-                <div class="tilda-feature reveal-card">
-                    <div class="service-icon"><i class="fas fa-cube"></i></div>
-                    <h3>Zero Block</h3>
-                    <p>Создавайте уникальные дизайны с нуля, используя мощный конструктор Zero Block</p>
+            <div class="tilda-carousel-container">
+                <div class="tilda-carousel" id="tildaCarousel">
+                    <div class="tilda-feature reveal-card">
+                        <div class="service-icon"><i class="fas fa-cube"></i></div>
+                        <h3>Zero Block</h3>
+                        <p>Создавайте уникальные дизайны с нуля, используя мощный конструктор Zero Block</p>
+                    </div>
+                    <div class="tilda-feature reveal-card">
+                        <div class="service-icon"><i class="fas fa-th-large"></i></div>
+                        <h3>Готовые блоки</h3>
+                        <p>Используйте более 450 готовых блоков для быстрой разработки</p>
+                    </div>
+                    <div class="tilda-feature reveal-card">
+                        <div class="service-icon"><i class="fas fa-plug"></i></div>
+                        <h3>Интеграции</h3>
+                        <p>Подключайте CRM, платежные системы и другие сервисы</p>
+                    </div>
                 </div>
-                <div class="tilda-feature reveal-card">
-                    <div class="service-icon"><i class="fas fa-th-large"></i></div>
-                    <h3>Готовые блоки</h3>
-                    <p>Используйте более 450 готовых блоков для быстрой разработки</p>
-                </div>
-                <div class="tilda-feature reveal-card">
-                    <div class="service-icon"><i class="fas fa-plug"></i></div>
-                    <h3>Интеграции</h3>
-                    <p>Подключайте CRM, платежные системы и другие сервисы</p>
-                </div>
+                <div class="carousel-nav-dots" id="tildaDots"></div>
             </div>
             <div class="tilda-cta reveal-card">
                 <h3>Быстрый запуск вашего проекта</h3>
@@ -121,67 +172,70 @@
     <section id="cases" class="cases">
         <div class="container">
             <h2 class="section-title reveal-text">Кейсы</h2>
-            <div class="case-studies-grid">
-                <div class="case-card reveal-card">
-                    <div class="case-card-image">
-                        <img src="https://picsum.photos/600/400?random=4" alt="E-Commerce проект">
-                        <div class="case-card-tags">
-                            <span><i class="fas fa-store"></i> E-Commerce</span>
-                            <span><i class="fab fa-react"></i> React.js</span>
+            <div class="cases-carousel-container">
+                <div class="cases-carousel" id="casesCarousel">
+                    <div class="case-card reveal-card">
+                        <div class="case-card-image">
+                            <img src="https://picsum.photos/600/400?random=4" alt="E-Commerce проект">
+                            <div class="case-card-tags">
+                                <span><i class="fas fa-store"></i> E-Commerce</span>
+                                <span><i class="fab fa-react"></i> React.js</span>
+                            </div>
+                            <div class="case-card-icon"><i class="fas fa-chart-line"></i></div>
                         </div>
-                        <div class="case-card-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="case-card-content">
+                            <h3>Рост продаж E-Commerce</h3>
+                            <p>Помогли клиенту достичь <b>200% роста выручки</b> через оптимизацию и новые функции.</p>
+                            <ul class="case-metrics">
+                                <li><span>200%</span> Рост выручки</li>
+                                <li><span>50%</span> Ускорение загрузки</li>
+                                <li><span>3x</span> Конверсия</li>
+                            </ul>
+                            <a href="#" class="case-link">Подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
                     </div>
-                    <div class="case-card-content">
-                        <h3>Рост продаж E-Commerce</h3>
-                        <p>Помогли клиенту достичь <b>200% роста выручки</b> через оптимизацию и новые функции.</p>
-                        <ul class="case-metrics">
-                            <li><span>200%</span> Рост выручки</li>
-                            <li><span>50%</span> Ускорение загрузки</li>
-                            <li><span>3x</span> Конверсия</li>
-                        </ul>
-                        <a href="#" class="case-link">Подробнее <i class="fas fa-arrow-right"></i></a>
+                    <div class="case-card reveal-card">
+                        <div class="case-card-image">
+                            <img src="https://picsum.photos/600/400?random=5" alt="SaaS платформа">
+                            <div class="case-card-tags">
+                                <span><i class="fas fa-cloud"></i> SaaS</span>
+                                <span><i class="fab fa-vuejs"></i> Vue.js</span>
+                            </div>
+                            <div class="case-card-icon"><i class="fas fa-bolt"></i></div>
+                        </div>
+                        <div class="case-card-content">
+                            <h3>Оптимизация SaaS платформы</h3>
+                            <p>Переработали frontend SaaS платформы, что привело к <b>улучшению вовлеченности</b> пользователей.</p>
+                            <ul class="case-metrics">
+                                <li><span>45%</span> Вовлеченность</li>
+                                <li><span>60%</span> Быстрее загрузка</li>
+                                <li><span>30%</span> Выше удержание</li>
+                            </ul>
+                            <a href="#" class="case-link">Подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="case-card reveal-card">
+                        <div class="case-card-image">
+                            <img src="https://picsum.photos/600/400?random=6" alt="Tilda проект">
+                            <div class="case-card-tags">
+                                <span><i class="fab fa-tumblr"></i> Tilda</span>
+                                <span><i class="fas fa-cube"></i> Zero Block</span>
+                            </div>
+                            <div class="case-card-icon"><i class="fas fa-rocket"></i></div>
+                        </div>
+                        <div class="case-card-content">
+                            <h3>Корпоративный сайт на Tilda</h3>
+                            <p>Разработали современный сайт для компании с <b>уникальным дизайном</b> на Tilda.</p>
+                            <ul class="case-metrics">
+                                <li><span>1 нед</span> Срок запуска</li>
+                                <li><span>+85%</span> Конверсия форм</li>
+                                <li><span>+120%</span> Заявок</li>
+                            </ul>
+                            <a href="#" class="case-link">Подробнее <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="case-card reveal-card">
-                    <div class="case-card-image">
-                        <img src="https://picsum.photos/600/400?random=5" alt="SaaS платформа">
-                        <div class="case-card-tags">
-                            <span><i class="fas fa-cloud"></i> SaaS</span>
-                            <span><i class="fab fa-vuejs"></i> Vue.js</span>
-                        </div>
-                        <div class="case-card-icon"><i class="fas fa-bolt"></i></div>
-                    </div>
-                    <div class="case-card-content">
-                        <h3>Оптимизация SaaS платформы</h3>
-                        <p>Переработали frontend SaaS платформы, что привело к <b>улучшению вовлеченности</b> пользователей.</p>
-                        <ul class="case-metrics">
-                            <li><span>45%</span> Вовлеченность</li>
-                            <li><span>60%</span> Быстрее загрузка</li>
-                            <li><span>30%</span> Выше удержание</li>
-                        </ul>
-                        <a href="#" class="case-link">Подробнее <i class="fas fa-arrow-right"></i></a>
-                    </div>
                 </div>
-                <div class="case-card reveal-card">
-                    <div class="case-card-image">
-                        <img src="https://picsum.photos/600/400?random=6" alt="Tilda проект">
-                        <div class="case-card-tags">
-                            <span><i class="fab fa-tumblr"></i> Tilda</span>
-                            <span><i class="fas fa-cube"></i> Zero Block</span>
-                        </div>
-                        <div class="case-card-icon"><i class="fas fa-rocket"></i></div>
-                    </div>
-                    <div class="case-card-content">
-                        <h3>Корпоративный сайт на Tilda</h3>
-                        <p>Разработали современный сайт для компании с <b>уникальным дизайном</b> на Tilda.</p>
-                        <ul class="case-metrics">
-                            <li><span>1 нед</span> Срок запуска</li>
-                            <li><span>+85%</span> Конверсия форм</li>
-                            <li><span>+120%</span> Заявок</li>
-                        </ul>
-                        <a href="#" class="case-link">Подробнее <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+                <div class="carousel-nav-dots" id="casesDots"></div>
             </div>
         </div>
     </section>
@@ -190,27 +244,30 @@
     <section id="advantages" class="advantages">
         <div class="container">
             <h2 class="section-title reveal-text">Почему выбирают меня?</h2>
-            <div class="advantages-grid">
-                <div class="advantage-card reveal-card">
-                    <div class="advantage-icon"><i class="fas fa-user-tie"></i></div>
-                    <h3>Личное участие</h3>
-                    <p>Я сам веду ваш проект от идеи до запуска — вы всегда общаетесь напрямую с разработчиком, без посредников и менеджеров.</p>
-                </div>
-                <div class="advantage-card reveal-card">
-                    <div class="advantage-icon"><i class="fas fa-bolt"></i></div>
-                    <h3>Гибкость и скорость</h3>
-                    <p>Быстро принимаю решения, оперативно реагирую на ваши задачи и могу подстроиться под любые изменения.</p>
-                </div>
-                <div class="advantage-card reveal-card">
-                    <div class="advantage-icon"><i class="fas fa-hand-holding-usd"></i></div>
-                    <h3>Выгодная стоимость</h3>
-                    <p>Нет расходов на офис, штат и менеджмент — вы платите только за реальную работу и результат.</p>
-                </div>
-                <div class="advantage-card reveal-card">
-                    <div class="advantage-icon"><i class="fas fa-heart"></i></div>
-                    <h3>Ответственность и вовлечённость</h3>
+            <div class="advantages-carousel-container">
+                <div class="advantages-carousel" id="advantagesCarousel">
+                    <div class="advantage-card reveal-card">
+                        <div class="advantage-icon"><i class="fas fa-user-tie"></i></div>
+                        <h3>Личное участие</h3>
+                        <p>Я сам веду ваш проект от идеи до запуска — вы всегда общаетесь напрямую с разработчиком, без посредников и менеджеров.</p>
+                    </div>
+                    <div class="advantage-card reveal-card">
+                        <div class="advantage-icon"><i class="fas fa-bolt"></i></div>
+                        <h3>Гибкость и скорость</h3>
+                        <p>Быстро принимаю решения, оперативно реагирую на ваши задачи и могу подстроиться под любые изменения.</p>
+                    </div>
+                    <div class="advantage-card reveal-card">
+                        <div class="advantage-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                        <h3>Выгодная стоимость</h3>
+                        <p>Нет расходов на офис, штат и менеджмент — вы платите только за реальную работу и результат.</p>
+                    </div>
+                    <div class="advantage-card reveal-card">
+                        <div class="advantage-icon"><i class="fas fa-heart"></i></div>
+                        <h3>Ответственность и вовлечённость</h3>
                     <p>Каждый проект делаю как для себя: гарантирую качество, честность и индивидуальный подход.</p>
                 </div>
+                </div>
+                <div class="carousel-nav-dots" id="advantagesDots"></div>
             </div>
         </div>
     </section>
