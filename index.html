@@ -106,10 +106,12 @@ padding:12px;
 display:flex;
 justify-content:center;
 border-radius:2px;
+margin-right:10px;
+margin-left:10px;
 }
 
 svg{
-width:80%;
+width:100%;
 height:80px;
 }
 
@@ -148,20 +150,16 @@ padding:0;
 <script>
 const data=[
 {
-title:"EID",
-value:"89049032007008882600086850939587"
+title:"EID", value:"89049032007008882600086850939587"
 },
 {
-title:"IMEI",
-value:"357727927570223"
+title:"IMEI", value:"357727927570223"
 },
 {
-title:"IMEI2",
-value:"350108845320735"
+title:"IMEI2", value:"350108845320735"
 },
 {
-title:"MEID",
-value:"35010884512439"
+title:"MEID", value:"35010884512439"
 }
 ];
 
@@ -206,9 +204,7 @@ data.forEach(d=>{
 container.innerHTML+=`
 <div class="item">
 
-<div class="label">${d.title}</div>
-
-<div class="value">${d.value}</div>
+<div class="label">${d.title}</div> <div class="value">${d.value}</div>
 
 <div class="barcode">
 ${barcode(d.value)}
